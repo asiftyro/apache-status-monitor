@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apache Status</title>
+    <link rel="stylesheet" href="css/bootstrap.min.3.3.7.css">
+    <script src="js/socket.io.js"></script>
+    <script src="js/jquery.min.3.3.1.js"></script>
+    <script src="js/underscore.min.1.9.1.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="clinetConnectionStatus" class="alert alert-danger" role="alert">...</h1>
+        <h2>Apache Status</h2>
+        <table class="table table-bordered table-condensed table-hover table-striped" id="apacheStatusView">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>URL</th>
+                    <th>Priority</th>
+                    <th>Capacity</th>
+                    <th>Load</th>
+                    <th>Probe Status</th>
+                    <th>Last Response</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script>
+        $(function() {
+            var td = _.template("<td><%= val %></td>");
+            var tr = _.template("<tr><%= val %></tr>");
+            var trError = _.template("<tr class='danger'><%= val %></tr>");
+            var tbody = _.template("<tbody><%= val %></tbody>");
+            var socket = io.connect('http://localhost:3000');
+
+            socket.on('apache status', function(incoming) {
+                var trCont = ""
+                for (k in incoming) {
+
+                    var tdCont =
+                        td({ val: incoming[k].Name }) +
+                        td({ val: '<a target="_blank" href="'+incoming[k].URL+'">'+incoming[k].URL+'</a>' }) +
+                        td({ val: incoming[k].Priority }) +
+                        td({ val: incoming[k].Capacity }) +
+                        td({ val: incoming[k].Load }) +
+                        td({ val: incoming[k].ProbeStatus }) +
+                        td({ val: incoming[k].LastResponse });
+
+                    if ((incoming[k].Load < incoming[k].Capacity) &&
+                        incoming[k].Load != -1
+                    ) {
+                        trCont = trCont + tr({ val: tdCont });
+                    } else {
+                        trCont = trCont + trError({ val: tdCont });
+                    }
+                };
+
+                $('#apacheStatusView tbody').html(trCont);
+                // console.log(trCont);
+            }); // socket on apache status
+            socket.on('connect', function() {
+                $('#clinetConnectionStatus').text("Connected").hide();
+            });
+            socket.on('disconnect', function() {
+                $('#clinetConnectionStatus').text("Disconnected").show();
+            });
+            socket.on('reconnect_attempt', function(attempt) {
+                $('#clinetConnectionStatus').text("Disconnected! Retrying to connect... " + attempt).show();
+            });
+        }); // end of ready function
+        </script>
+    </div>
+</body>
+
+</html>

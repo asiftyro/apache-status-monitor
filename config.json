@@ -1,0 +1,4 @@
+{
+    "probingIntervalMs": 2000,
+    "probeTimeoutMs": 1500
+}

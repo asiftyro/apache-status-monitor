@@ -1,0 +1,28 @@
+[
+
+    {
+        "Name":"SERVER-NAME-01",
+        "URL": "http://127.0.0.1:8888",
+        "Capacity":1200,
+        "Priority": 3
+    },
+    {
+        "Name":"SERVER-NAME-03",
+        "URL": "http://127.0.0.1:8887",
+        "Capacity":700,
+        "Priority": 1
+    },
+    {
+        "Name":"SERVER-NAME-02",
+        "URL": "http://192.168.91.130/server-status",
+        "Capacity":1100,
+        "Priority": 1
+    },
+    {
+        "Name":"SERVER-NAME-04",
+        "URL": "http://192.168.61.144/server-status",
+        "Capacity":500,
+        "Priority": 2
+    }
+
+]

@@ -1,0 +1,35 @@
+{
+    "name": "apache-status-monitor",
+    "version": "1.0.0",
+    "description": "apache status monitor - a status page (html) parser with monitor server",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "DEBUG=express:* nodemon app.js",
+        "start": "node app.js"
+    },
+    "keywords": [
+        "apache",
+        "status",
+        "monitor",
+        "node",
+        "javascript",
+        "js"
+    ],
+    "author": "Asif R Porosh (for SSL Wireless)",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/asiftyro/apache-status-monitor.git"
+    },
+    "dependencies": {
+        "express": "^4.16.3",
+        "request": "^2.87.0",
+        "request-promise": "^4.2.2",
+        "socket.io": "^2.1.1",
+        "underscore": "^1.9.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.17.5"
+    }
+}
