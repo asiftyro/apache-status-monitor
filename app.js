@@ -31,7 +31,6 @@ const parseClientCount = (htmlString)=> {
 }; // end func parseClientCount
 
 
-
 const probe = () => {
 
     let reqArr = [];
@@ -46,13 +45,13 @@ const probe = () => {
 
         let rp = reqPromise(reqOptions).then((cont) => {
             status[k].Load = parseClientCount(cont);
-            status[k].LastResponse = new Date();
+            status[k].LastResponse =  new Date().toLocaleString();
             status[k].ProbeStatus = 'OK';
-            // echo(JSON.stringify(status));
+            io.emit('apache status', status);
         }).catch((err) => {
             status[k].Load = -1;
             status[k].ProbeStatus = err.message;
-            // echo(JSON.stringify(status));
+            io.emit('apache status', status);
         });
 
         reqArr.push(rp);
@@ -60,10 +59,10 @@ const probe = () => {
     }; // next server
 
     Promise.all(reqArr).then(function(docs) {
-        io.emit('apache status', status);
+        // io.emit('apache status', status);
         setTimeout(probe, config.probingIntervalMs);
     }).catch(function(er) {
-        io.emit('apache status', status);
+        // io.emit('apache status', status);
         setTimeout(probe, config.probingIntervalMs);
     });
 

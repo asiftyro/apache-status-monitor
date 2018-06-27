@@ -1,0 +1,22 @@
+body {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+}
+
+.thead-inverse th {
+    color: #fff;
+    background-color: #373a3c;
+}
+
+.table,
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+    padding: 10px;
+    line-height: 1;
+    vertical-align: top;
+    border: 1px dashed black;
+}
+

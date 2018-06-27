@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "DEBUG=express:* nodemon app.js",
-        "start": "node app.js"
+        "start": "pm2 start app.js --watch --name apache-status-monitor -e /var/opt/apache-status-monitor/err.log -o /var/opt/apache-status-monitor/out.log",
+        "stop": "pm2 stop apache-status-monitor"
     },
     "keywords": [
         "apache",
@@ -16,7 +17,7 @@
         "javascript",
         "js"
     ],
-    "author": "Asif R Porosh (for SSL Wireless)",
+    "author": "Asif R. Porosh (for SSL Wireless)",
     "license": "ISC",
     "repository": {
         "type": "git",
