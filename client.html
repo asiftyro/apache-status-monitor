@@ -34,11 +34,14 @@
         <p class="text-muted small text-right">Developed by Service Assurance, SSL Wireless</p>
         <script>
         $(function() {
+            /*********************************************/
+            var serverURL = 'http://localhost:3000';
+            /*********************************************/
             var td = _.template("<td><%= val %></td>");
             var tr = _.template("<tr><%= val %></tr>");
             var trError = _.template("<tr class='danger'><%= val %></tr>");
             var tbody = _.template("<tbody><%= val %></tbody>");
-            var socket = io.connect('http://localhost:3000');
+            var socket = io.connect(serverURL);
 
             socket.on('apache status', function(incoming) {
                 var trCont = "";
@@ -63,7 +66,7 @@
                     }
                 };
 
-                $('#apacheStatusView tbody').html(trContErr+trCont);
+                $('#apacheStatusView tbody').html(trContErr + trCont);
                 // console.log(trCont);
             }); // socket on apache status
             socket.on('connect', function() {

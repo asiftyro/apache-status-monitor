@@ -27,6 +27,8 @@ Install App:
     git clone https://github.com/asiftyro/apache-status-monitor.git
 
     npm i
+    
+    vi client.html  [Edit var serverURL = 'http://localhost:3000' to match host.]
 
 Start App:
 
