@@ -28,7 +28,7 @@ Install App:
 
 Start App:
 
-    cd /var/opt/apache-status-monitor
+    cd /var/apache-status-monitor
     
     npm start
 
