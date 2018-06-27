@@ -26,6 +26,8 @@ Install App:
     
     git clone https://github.com/asiftyro/apache-status-monitor.git
 
+    npm i
+
 Start App:
 
     cd /opt/apache-status-monitor
