@@ -11,11 +11,11 @@ const io = require('socket.io')(http);
 const config = require('./config.json');
 
 let status = require("./server-list.json");
-status = _.sortBy(( _.sortBy(status, 'Name')), 'Priority');
+status = _.sortBy((_.sortBy(status, 'Name')), 'Priority');
 
 const echo = (i) => console.log(i);
 
-const parseClientCount = (htmlString)=> {
+const parseClientCount = (htmlString) => {
     var lines = htmlString.split('\n');
     for (var i = 0; i < lines.length; i++) {
         if (lines[i].includes("currently being processed")) {
@@ -45,12 +45,15 @@ const probe = () => {
 
         let rp = reqPromise(reqOptions).then((cont) => {
             status[k].Load = parseClientCount(cont);
-            status[k].LastResponse =  new Date().toLocaleString();
+            status[k].LastResponse = new Date().toLocaleString();
             status[k].ProbeStatus = 'OK';
             io.emit('apache status', status);
         }).catch((err) => {
             status[k].Load = -1;
-            status[k].ProbeStatus = err.message;
+            if (err.statusCode)
+                status[k].ProbeStatus = err.statusCode;
+            else
+                status[k].ProbeStatus = err.message;
             io.emit('apache status', status);
         });
 
