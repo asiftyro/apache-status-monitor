@@ -15,7 +15,7 @@
     {
         "Name":"SERVER-NAME-02",
         "URL": "http://192.168.91.130/server-status",
-        "Capacity":1100,
+        "Capacity":500,
         "Priority": 1
     },
     {

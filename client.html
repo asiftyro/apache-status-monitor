@@ -40,12 +40,14 @@
             var td = _.template("<td><%= val %></td>");
             var tr = _.template("<tr><%= val %></tr>");
             var trError = _.template("<tr class='danger'><%= val %></tr>");
+            var trWarning = _.template("<tr class='warning'><%= val %></tr>");
             var tbody = _.template("<tbody><%= val %></tbody>");
             var socket = io.connect(serverURL);
 
             socket.on('apache status', function(incoming) {
                 var trCont = "";
                 var trContErr = "";
+                var trContWarn = "";
                 for (k in incoming) {
 
                     var tdCont =
@@ -57,16 +59,20 @@
                         td({ val: incoming[k].ProbeStatus }) +
                         td({ val: incoming[k].LastResponse });
 
-                    if ((incoming[k].Load <= incoming[k].Capacity) &&
-                        incoming[k].Load != -1
-                    ) {
-                        trCont = trCont + tr({ val: tdCont });
+                    if (incoming[k].Load != -1) {
+                        if (incoming[k].Load >= incoming[k].Capacity) {
+                            trContErr = trContErr + trError({ val: tdCont });
+                        } else if (incoming[k].Load >= incoming[k].Capacity*80/100) {
+                            trContWarn = trContWarn + trWarning({ val: tdCont });
+                        } else {
+                            trCont = trCont + tr({ val: tdCont });
+                        }
                     } else {
                         trContErr = trContErr + trError({ val: tdCont });
                     }
                 };
 
-                $('#apacheStatusView tbody').html(trContErr + trCont);
+                $('#apacheStatusView tbody').html(trContErr + trContWarn + trCont);
                 // console.log(trCont);
             }); // socket on apache status
             socket.on('connect', function() {

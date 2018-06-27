@@ -28,7 +28,7 @@ Install App:
 
     npm i
     
-    vi client.html  [Edit var serverURL = 'http://localhost:3000' to match host.]
+    vi client.html  [Edit line 38 var serverURL = 'http://localhost:3000' to match host.]
 
 Start App:
 
@@ -38,15 +38,15 @@ Start App:
 
 Stop App:
 
-    cd /var/opt/apache-status-monitor
+    cd /opt/apache-status-monitor
     
     npm stop
 
 Configure App:
     
-    Edit server-list.json to set servers to be monitored.
+    Edit /opt/apache-status-monitor/server-list.json to set servers to be monitored.
 
-    Edit config.json to set App related pref.
+    Edit /opt/apache-status-monitor/config.json to set App related pref.
 
 
 PM2 Commands:
