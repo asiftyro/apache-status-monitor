@@ -27,6 +27,7 @@
                     <th>Load</th>
                     <th>Probe Status</th>
                     <th>Last Response</th>
+                    <th>Last Try</th>
                 </tr>
             </thead>
             <tbody class="thead-inverse"></tbody>
@@ -57,7 +58,8 @@
                         td({ val: incoming[k].Capacity }) +
                         td({ val: incoming[k].Load }) +
                         td({ val: incoming[k].ProbeStatus }) +
-                        td({ val: incoming[k].LastResponse });
+                        td({ val: incoming[k].LastResponse }) + 
+                        td({ val: incoming[k].LastTry });
 
                     if (incoming[k].Load != -1) {
                         if (incoming[k].Load >= incoming[k].Capacity) {

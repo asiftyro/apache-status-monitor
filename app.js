@@ -46,6 +46,7 @@ const probe = () => {
         let rp = reqPromise(reqOptions).then((cont) => {
             status[k].Load = parseClientCount(cont);
             status[k].LastResponse = new Date().toLocaleString();
+            status[k].LastTry = status[k].LastResponse
             status[k].ProbeStatus = 'OK';
             io.emit('apache status', status);
         }).catch((err) => {
@@ -54,6 +55,7 @@ const probe = () => {
                 status[k].ProbeStatus = err.statusCode;
             else
                 status[k].ProbeStatus = err.message;
+            status[k].LastTry = new Date().toLocaleString();
             io.emit('apache status', status);
         });
 
