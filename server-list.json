@@ -1,11 +1,23 @@
 [
 
     {
-        "Name":"SERVER-NAME-01",
-        "URL": "http://127.0.0.1:4001",
-        "Capacity":1200,
+        "Name":"Dev Test Server 1",
+        "URL": "http://127.0.0.1:3000/mock-status",
+        "Capacity":1233,
         "Priority": 3
     },
+    {
+        "Name":"Dev Test Server 2",
+        "URL": "http://127.0.0.1:3000/mock-status",
+        "Capacity":1233,
+        "Priority": 3
+    },    
+    {
+        "Name":"Dev Test Server 3",
+        "URL": "http://127.0.0.1:3000/mock-status",
+        "Capacity":1233,
+        "Priority": 3
+    },  
     {
         "Name":"SERVER-NAME-03",
         "URL": "http://127.0.0.1:4002",

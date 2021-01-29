@@ -1,6 +1,6 @@
 {
     "name": "apache-status-monitor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "apache status monitor - a status page (html) parser with monitor server",
     "main": "app.js",
     "scripts": {
@@ -24,11 +24,12 @@
         "url": "https://github.com/asiftyro/apache-status-monitor.git"
     },
     "dependencies": {
-        "express": "^4.16.3",
-        "request": "^2.87.0",
-        "request-promise": "^4.2.2",
-        "socket.io": "^2.1.1",
-        "underscore": "^1.9.1"
+        "express": "^4.17.1",
+        "fs": "0.0.1-security",
+        "request": "^2.88.2",
+        "request-promise": "^4.2.6",
+        "socket.io": "^2.4.1",
+        "underscore": "^1.12.0"
     },
     "devDependencies": {}
 }

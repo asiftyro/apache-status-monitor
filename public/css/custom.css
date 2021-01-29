@@ -1,5 +1,5 @@
-body {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+* {
+    font-family: "arial", "Lucida Sans Unicode", "Lucida Grande", sans-serif
 }
 
 .thead-inverse th {
@@ -14,9 +14,11 @@ body {
 .table>tfoot>tr>th,
 .table>thead>tr>td,
 .table>thead>tr>th {
-    padding: 10px;
-    line-height: 1;
-    vertical-align: top;
-    border: 1px dashed black;
+    /*padding-top: 10px;*/
+    /*padding-bottom: 10px;*/
+    /*line-height: 1;*/
+    /*vertical-align: top;*/
+    /*border-bottom: 4px solid white;*/
+    /*font-size: 12px;*/
 }
 

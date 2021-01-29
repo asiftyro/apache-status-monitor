@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Apache Status Monitor - SSLW</title>
-    <link rel="stylesheet" href="css/bootstrap.min.3.3.7.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.3.3.7.css"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="js/socket.io.js"></script>
     <script src="js/jquery.min.3.3.1.js"></script>
@@ -15,13 +16,12 @@
 
 <body>
     <div class="container">
-        <h3 id="clinetConnectionStatus" class="alert alert-danger" role="alert">...</h3>
-        <h2>Apache Status <sup>β - 1.0</sup></h2>
+        <h3>Apache Status <sup>β - 1.0.1</sup></h3>
+        <p id="clinetConnectionStatus" class="alert alert-danger" role="alert">...</p>
         <table class="table table-bordered table-condensed table-hover table-striped" id="apacheStatusView">
             <thead class="thead-inverse">
                 <tr>
                     <th>Name</th>
-                    <th>URL</th>
                     <th>Priority</th>
                     <th>Capacity</th>
                     <th>Load</th>
@@ -39,7 +39,7 @@
             var serverURL = 'http://localhost:3000';
             /*********************************************/
             var td = _.template("<td><%= val %></td>");
-            var tr = _.template("<tr><%= val %></tr>");
+            var tr = _.template("<tr class='success'><%= val %></tr>");
             var trError = _.template("<tr class='danger'><%= val %></tr>");
             var trWarning = _.template("<tr class='warning'><%= val %></tr>");
             var tbody = _.template("<tbody><%= val %></tbody>");
@@ -52,8 +52,7 @@
                 for (k in incoming) {
 
                     var tdCont =
-                        td({ val: incoming[k].Name }) +
-                        td({ val: '<a target="_blank" href="' + incoming[k].URL + '">' + incoming[k].URL + '</a>' }) +
+                        td({ val: '<a target="_blank" href="' + incoming[k].URL + '">' + incoming[k].Name + '</a>' }) +
                         td({ val: incoming[k].Priority }) +
                         td({ val: incoming[k].Capacity }) +
                         td({ val: incoming[k].Load }) +
