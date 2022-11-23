@@ -28,7 +28,7 @@
         "fs": "0.0.1-security",
         "request": "^2.88.2",
         "request-promise": "^4.2.6",
-        "socket.io": "^2.4.1",
+        "socket.io": "^2.5.0",
         "underscore": "^1.12.0"
     },
     "devDependencies": {}
