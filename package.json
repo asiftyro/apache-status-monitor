@@ -1,35 +1,35 @@
 {
-    "name": "apache-status-monitor",
-    "version": "1.0.1",
-    "description": "apache status monitor - a status page (html) parser with monitor server",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "DEBUG=express:* nodemon app.js",
-        "start": "pm2 start app.js --watch --name apache-status-monitor -e /var/opt/apache-status-monitor/err.log -o /var/opt/apache-status-monitor/out.log",
-        "stop": "pm2 stop apache-status-monitor"
-    },
-    "keywords": [
-        "apache",
-        "status",
-        "monitor",
-        "node",
-        "javascript",
-        "js"
-    ],
-    "author": "Asif R. Porosh (for SSL Wireless)",
-    "license": "ISC",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/asiftyro/apache-status-monitor.git"
-    },
-    "dependencies": {
-        "express": "^4.17.1",
-        "fs": "0.0.1-security",
-        "request": "^2.88.2",
-        "request-promise": "^4.2.6",
-        "socket.io": "^2.4.1",
-        "underscore": "^1.12.0"
-    },
-    "devDependencies": {}
+  "name": "apache-status-monitor",
+  "version": "1.0.1",
+  "description": "apache status monitor - a status page (html) parser with monitor server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "DEBUG=apache-status-monitor:* ./node_modules/nodemon/bin/nodemon.js app.js -e js,mjs,json,ejs,html,js,css",
+    "start": "pm2 start app.js --watch --name apache-status-monitor -e /var/opt/apache-status-monitor/err.log -o /var/opt/apache-status-monitor/out.log",
+    "stop": "pm2 stop apache-status-monitor"
+  },
+  "keywords": [
+    "apache",
+    "status",
+    "monitor",
+    "node",
+    "javascript",
+    "js"
+  ],
+  "author": "Asif R. Porosh",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asiftyro/apache-status-monitor.git"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "request-promise": "^4.2.6",
+    "socket.io": "^4.5.4",
+    "underscore": "^1.13.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }
